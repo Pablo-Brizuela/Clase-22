@@ -8,10 +8,14 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
 	index: (req, res) => {
-		// Do the magic
+		res.render("index",{productos:products})
 	},
 	search: (req, res) => {
-		// Do the magic
+		const search = res.query.keywords;
+		
+		const resultado = products.filter(p => p.name == search)
+
+		res.render("results", {productos:resultado})
 	},
 };
 
